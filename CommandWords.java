@@ -13,8 +13,16 @@ public class CommandWords
 {
     // a constant array that holds all valid command words
     private static final String[] validCommands = {
-        "go", "quit", "help"
+        "go", "quit", "help", "look", "eat", "sleep"
     };
+
+    public void showAll(){
+        for(String command : validCommands) {
+            System.out.print(command + " ");
+        }
+        System.out.println();
+    }
+
 
     /**
      * Constructor - initialise the command words.

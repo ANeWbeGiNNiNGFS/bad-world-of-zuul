@@ -67,7 +67,7 @@ public class Game
         // initialise room exits
         spawn.setExits("north", spawnexit);
         spawnexit.setExits("east", amongussus);
-        amongussus.setExits("north west", fireportal);
+        amongussus.setExits("northwest", fireportal);
         //firecaveEntrance.setExits(null, null, spawnexit, fireportal);
         fireportal.setExits("north east", spawn);
         /*crazyplaceFire.setExits(null,fireportal, null,null);
@@ -141,6 +141,15 @@ public class Game
         else if (commandWord.equals("go")) {
             goRoom(command);
         }
+        else if (commandWord.equals("look")) {
+            look();
+        }
+        else if (commandWord.equals("eat")) {
+            eat();
+            }
+        else if (commandWord.equals("sleep") ){
+                sleep();
+        }
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
@@ -161,7 +170,7 @@ public class Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+        parser.showCommands();
     }
 
     /**
@@ -183,33 +192,23 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
-            if(currentRoom.getExit("north") != null) {
-            }
-            if(currentRoom.getExit("east") != null) {
-            }
-            if(currentRoom.getExit("south") != null) {
-            }
-            if(currentRoom.getExit("west") != null) {
-            }
             printLocationInfo();
         }
     }
     public void printLocationInfo(){
         System.out.println(currentRoom.getLongDescription());
-        //System.out.println(currentRoom.getExitString());
-        /*if(currentRoom.getExit("north") != null) {
-            System.out.print("north ");
-        }
-        if(currentRoom.getExit("east") != null) {
-            System.out.print("east ");
-        }
-        if(currentRoom.getExit("south") != null) {
-            System.out.print("south ");
-        }
-        if(currentRoom.getExit("west") != null) {
-            System.out.print("west ");
-        }
-        System.out.println();*/
+    }
+
+    private void look() {
+        System.out.println(currentRoom.getLongDescription());
+    }
+
+    private void eat() {
+        System.out.println("You have eaten and you are not hungry anymore");
+    }
+
+    private void sleep() {
+        System.out.println("You take a nap on the floor");
     }
 
     /**
